@@ -1,4 +1,3 @@
-// Arquivo: Componentes/TopBar.js
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
@@ -13,11 +12,12 @@ const TopBar = () => {
 const styles = StyleSheet.create({
     container: {
         height: 60,
+        alignItems: 'center',
         padding: 15,
-        backgroundColor: 'blue', // Mude para a cor que desejar
+        backgroundColor: 'white', // Altere para a cor que você deseja
     },
     title: {
-        color: 'white',
+        color: 'blue', // Altere para a cor que você deseja
         fontSize: 20,
         fontWeight: 'bold',
     },

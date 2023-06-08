@@ -4,10 +4,10 @@ import { View, Button, StyleSheet } from 'react-native';
 const BottomBar = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Button title="Home" onPress={() => navigation.navigate('Principal')} style={styles.button} />
-      <Button title="Rotas" onPress={() => navigation.navigate('Rotas')} style={styles.button} />
-      <Button title="Emergência" onPress={() => {}} style={styles.button} />
-      <Button title="Perfil" onPress={() => navigation.navigate('Perfil')} style={styles.lastButton} />
+      <Button title="Home" color="lightpurple" onPress={() => navigation.navigate('Principal')} style={styles.button} />
+      <Button title="Rotas" color="lightpurple" onPress={() => navigation.navigate('Rotas')} style={styles.button} />
+      <Button title="Emergência" color="lightpurple" onPress={() => {}} style={styles.button} />
+      <Button title="Perfil" color="lightpurple" onPress={() => navigation.navigate('Perfil')} style={styles.lastButton} />
     </View>
   );
 }
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    backgroundColor: 'purple',
+    backgroundColor: 'white',
   },
   button: {
     flex: 1,

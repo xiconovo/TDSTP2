@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Button } from 'react-native';
+import { StyleSheet, ImageBackground, TextInput, Button } from 'react-native';
 import { loginUser } from '../Api/api';
 
 const Login = ({navigation}) => {
@@ -9,10 +9,10 @@ const Login = ({navigation}) => {
     const handleLogin = () => {
         console.log('Button pressed');
         loginUser(username, password, navigation);
-      };
+    };
 
     return (
-        <View style={styles.container}>
+        <ImageBackground source={require('../assets/braga2.jpeg')} style={styles.container}>
             <TextInput
                 style={styles.input}
                 onChangeText={setUsername}
@@ -24,13 +24,13 @@ const Login = ({navigation}) => {
                 onChangeText={setPassword}
                 value={password}
                 placeholder="Password"
-                secureTextEntry // Isso fará com que a senha seja ocultada.
+                secureTextEntry
             />
             <Button
                 title="Login"
                 onPress={handleLogin}
             />
-        </View>
+        </ImageBackground>
     );
 }
 
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginBottom: 10,
         padding: 10,
+        backgroundColor: 'rgba(255,255,255,0.8)', // Para dar um fundo semi-transparente ao input
     },
 });
 
