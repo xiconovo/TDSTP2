@@ -7,6 +7,7 @@ import Principal from './Ecras/Principal';
 import Rotas from './Ecras/Rotas';
 import Emergencia from './Ecras/Emergencia';
 import Perfil from './Ecras/Perfil';
+import TrailDetails from './Ecras/TrailDetails'; // Importa o componente TrailDetails aqui
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ const App = () => (
       <Stack.Screen name="Rotas" component={Rotas} />
       <Stack.Screen name="Emergencia" component={Emergencia} />
       <Stack.Screen name="Perfil" component={Perfil} />
+      <Stack.Screen name="TrailDetails" component={TrailDetails} />
     </Stack.Navigator>
   </NavigationContainer>
 );

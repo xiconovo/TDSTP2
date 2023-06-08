@@ -1,24 +1,25 @@
-// Ecras/Rotas.js
+// Profile.js
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import TopBar from '../Componentes/TopBar';
-import BottomBar from '../Componentes/BottomBar';
+import { View, Button } from 'react-native';
+import { logoutUser, apiLogout } from '../Api/api';
 
-const Rotas = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <TopBar />
-      <Text>Esta é a página Rotas</Text>
-      <BottomBar navigation={navigation} />
-    </View>
-  );
-}
+const Profile = ({navigation}) => {
+    const handleLogout = async () => {
+        await apiLogout();
+        logoutUser();
+        // Navegar para a tela de login após o logout
+        navigation.navigate('Login');
+    };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
+    return (
+        <View>
+            {/* Aqui vai o código para mostrar os detalhes do perfil do usuário */}
+            <Button
+                title="Logout"
+                onPress={handleLogout}
+            />
+        </View>
+    );
+};
 
-export default Rotas;
+export default Profile;
