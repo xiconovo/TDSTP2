@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { fetchUserDetails } from '../Api/api';
+import { useNavigation } from '@react-navigation/native';
 
 const TrailDetails = ({ route }) => {
     const { trail, trailImage } = route.params;
-
     const [userDetails, setUserDetails] = useState({});
+    const navigation = useNavigation();
 
     useEffect(() => {
         const getUserDetails = async () => {
@@ -17,6 +18,11 @@ const TrailDetails = ({ route }) => {
         getUserDetails();
     }, []);
 
+    const handleStartTrail = () => {
+        // Navega para a tela TrailMap, passando o trail como parÃ¢metro
+        navigation.navigate('TrailMap', { trail });
+    };
+
     return (
         <ScrollView style={styles.container}>
             <Image source={{ uri: trail.trail_img }} style={styles.trailImage} />
@@ -26,7 +32,7 @@ const TrailDetails = ({ route }) => {
             <Text>Difficulty: {trail.trail_difficulty}</Text>
             {userDetails.user_type === 'Premium' && (
                 <View>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={handleStartTrail}>
                         <Text style={styles.buttonText}>Iniciar Percurso</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button}>

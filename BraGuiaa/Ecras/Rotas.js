@@ -1,3 +1,5 @@
+Rotas.js
+
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
 import { fetchTrails } from '../Api/api';
@@ -17,7 +19,7 @@ const Rotas = () => {
     }, []);
 
     const handlePress = (trail) => {
-        navigation.navigate('TrailDetails', { trail });
+        navigation.navigate('TrailDetails', { trail, trailImage: trail.trail_img });
     };
 
     return (
@@ -63,3 +65,4 @@ const styles = StyleSheet.create({
 });
 
 export default Rotas;
+

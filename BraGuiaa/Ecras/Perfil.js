@@ -11,7 +11,6 @@ const Profile = ({navigation}) => {
         navigation.navigate('Login');
     };
 
-    // Supondo que userType e username são obtidos de algum lugar (possivelmente estado global ou AsyncStorage)
     const userType = 'Premium'; // Substitua isso pelo valor real
     const username = 'johndoe'; // Substitua isso pelo valor real
 
@@ -19,9 +18,12 @@ const Profile = ({navigation}) => {
         navigation.navigate('ProfileInfo', { userType, username });
     };
 
+    const handleHistoryPress = () => {
+        navigation.navigate('History');
+    };
+
     return (
         <View>
-            {/* Aqui vai o código para mostrar os detalhes do perfil do usuário */}
             <Button
                 title="Perfil"
                 onPress={handleProfileInfoPress}
@@ -29,6 +31,10 @@ const Profile = ({navigation}) => {
             <Button
                 title="Logout"
                 onPress={handleLogout}
+            />
+            <Button
+                title="Historico"
+                onPress={handleHistoryPress}
             />
         </View>
     );
