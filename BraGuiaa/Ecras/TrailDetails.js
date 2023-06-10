@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { fetchUserDetails } from '../Api/api';
 import { useNavigation } from '@react-navigation/native';
+import { TrailHistoryContext } from '../Ecras/TrailHistoryContext';
 
 const TrailDetails = ({ route }) => {
     const { trail, trailImage } = route.params;
     const [userDetails, setUserDetails] = useState({});
     const navigation = useNavigation();
+    const { addToHistory } = useContext(TrailHistoryContext);
 
     useEffect(() => {
         const getUserDetails = async () => {
@@ -19,8 +21,14 @@ const TrailDetails = ({ route }) => {
     }, []);
 
     const handleStartTrail = () => {
-        // Navega para a tela TrailMap, passando o trail como parÃ¢metro
+        // Navega para a tela TrailMap, passando o trail como parâmetro
         navigation.navigate('TrailMap', { trail });
+
+        addToHistory({
+            name: trail.trail_name,
+            image: trail.trail_img,
+            id: trail.id  
+          });
     };
 
     return (

@@ -1,5 +1,3 @@
-Rotas.js
-
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
 import { fetchTrails } from '../Api/api';
@@ -65,4 +63,3 @@ const styles = StyleSheet.create({
 });
 
 export default Rotas;
-

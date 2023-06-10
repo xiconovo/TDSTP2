@@ -10,10 +10,12 @@ import ProfileInfo from './Ecras/ProfileInfo';
 import TrailDetails from './Ecras/TrailDetails'; 
 import TrailMap from './Ecras/TrailMap';
 import History from './Ecras/History';
+import { TrailHistoryProvider } from './Ecras/TrailHistoryContext'; 
 
 const Stack = createStackNavigator();
 
 const App = () => (
+  <TrailHistoryProvider>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} />
@@ -27,6 +29,7 @@ const App = () => (
         <Stack.Screen name="History" component={History} />
       </Stack.Navigator>
     </NavigationContainer>
+  </TrailHistoryProvider>
 );
 
 export default App;
