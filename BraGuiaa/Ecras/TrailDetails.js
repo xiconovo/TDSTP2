@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { fetchUserDetails } from '../Api/api';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute  } from '@react-navigation/native';
 import { TrailHistoryContext } from '../Ecras/TrailHistoryContext';
 
-const TrailDetails = ({ route }) => {
+const TrailDetails = ({  }) => {
+    const route = useRoute();
     const { trail, trailImage } = route.params;
     const [userDetails, setUserDetails] = useState({});
     const navigation = useNavigation();
@@ -27,7 +28,10 @@ const TrailDetails = ({ route }) => {
         addToHistory({
             name: trail.trail_name,
             image: trail.trail_img,
-            id: trail.id  
+            id: trail.id,
+            duration: trail.trail_duration,
+            difficulty: trail.trail_difficulty,
+            description: trail.trail_desc,
           });
     };
 
@@ -79,3 +83,5 @@ const styles = StyleSheet.create({
 });
 
 export default TrailDetails;
+
+

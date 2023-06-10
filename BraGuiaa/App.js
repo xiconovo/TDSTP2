@@ -11,6 +11,7 @@ import TrailDetails from './Ecras/TrailDetails';
 import TrailMap from './Ecras/TrailMap';
 import History from './Ecras/History';
 import { TrailHistoryProvider } from './Ecras/TrailHistoryContext'; 
+import TrailInfo from './Ecras/TrailInfo';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,7 @@ const App = () => (
         <Stack.Screen name="ProfileInfo" component={ProfileInfo} />
         <Stack.Screen name="TrailMap" component={TrailMap} />
         <Stack.Screen name="History" component={History} />
+        <Stack.Screen name="TrailInfo" component={TrailInfo} />
       </Stack.Navigator>
     </NavigationContainer>
   </TrailHistoryProvider>
