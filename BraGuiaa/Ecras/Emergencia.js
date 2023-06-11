@@ -1,24 +1,18 @@
-// Ecras/Rotas.js
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import TopBar from '../Componentes/TopBar';
-import BottomBar from '../Componentes/BottomBar';
+import { View, Button } from 'react-native';
+import { Linking } from 'react-native';
 
-const Rotas = ({ navigation }) => {
+const Emergencia = () => {
+  const handleEmergencyCall = () => {
+    Linking.openURL('tel:112')
+      .catch((err) => console.error('Failed to dial 112', err));
+  };
+
   return (
-    <View style={styles.container}>
-      <TopBar />
-      <Text>Esta é a página Rotas</Text>
-      <BottomBar navigation={navigation} />
+    <View>
+      <Button title="Emergência" onPress={handleEmergencyCall} />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
-
-export default Rotas;
+export default Emergencia;

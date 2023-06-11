@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { fetchUserDetails } from '../Api/api';
-import { useNavigation, useRoute  } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { TrailHistoryContext } from '../Ecras/TrailHistoryContext';
 
-const TrailDetails = ({  }) => {
-    const route = useRoute();
+const TrailDetails = ({ route }) => {
     const { trail, trailImage } = route.params;
     const [userDetails, setUserDetails] = useState({});
     const navigation = useNavigation();
@@ -28,11 +27,12 @@ const TrailDetails = ({  }) => {
         addToHistory({
             name: trail.trail_name,
             image: trail.trail_img,
-            id: trail.id,
-            duration: trail.trail_duration,
-            difficulty: trail.trail_difficulty,
-            description: trail.trail_desc,
+            id: trail.id  
           });
+    };
+
+    const handleViewMediafiles = () => {
+        navigation.navigate('MediaFiles', { trail });
     };
 
     return (
@@ -47,7 +47,7 @@ const TrailDetails = ({  }) => {
                     <TouchableOpacity style={styles.button} onPress={handleStartTrail}>
                         <Text style={styles.buttonText}>Iniciar Percurso</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={handleViewMediafiles}>
                         <Text style={styles.buttonText}>Visualizar Mediafiles</Text>
                     </TouchableOpacity>
                 </View>
@@ -83,5 +83,3 @@ const styles = StyleSheet.create({
 });
 
 export default TrailDetails;
-
-

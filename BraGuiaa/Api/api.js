@@ -1,12 +1,14 @@
 // Api.js
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
+import React, { useContext } from 'react';
+import { AuthContext } from '../Modelos/AuthContext';
 
 
 const BASE_URL = 'https://c5a2-193-137-92-29.eu.ngrok.io';
 let csrfToken = null;
 
 export const loginUser = async (username, password, navigation) => {
+    const authContext = useContext(AuthContext);
     try {
         console.log('Sending request to API');
         let response = await fetch(`${BASE_URL}/login`, {
@@ -38,6 +40,7 @@ export const loginUser = async (username, password, navigation) => {
             console.log('csrftoken:', csrftoken);
             await AsyncStorage.setItem('sessionid', sessionid);
             console.log('sessionid:', sessionid);
+            authContext.onLogin();
             navigation.navigate('Principal');
         } else {
             console.warn('Set-Cookie is null, not storing in AsyncStorage');
@@ -142,6 +145,7 @@ export const cookieBakery = async () => {
   }
 
   export const apiLogout = async () => {
+    const authContext = useContext(AuthContext);
     try {
         const cookie = await cookieBakery();  // Use o cookie salvo na AsyncStorage
         console.log('Using cookie:', cookie);
@@ -182,6 +186,8 @@ export const cookieBakery = async () => {
             await AsyncStorage.removeItem('csrftoken');
             await AsyncStorage.removeItem('sessionid');
             console.log('Cookies removed from AsyncStorage');
+            authContext.onLogout();
+
         } else {
             console.error('Failed to logout user:', response.status);
         }
@@ -194,6 +200,5 @@ export const cookieBakery = async () => {
         console.error('Error during logout:', error);
     }
 };
-
 
 

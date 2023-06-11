@@ -6,7 +6,7 @@ const BottomBar = ({ navigation }) => {
     <View style={styles.container}>
       <Button title="Home" color="black" onPress={() => navigation.navigate('Principal')} style={styles.button} />
       <Button title="Rotas" color="black" onPress={() => navigation.navigate('Rotas')} style={styles.button} />
-      <Button title="Emergência" color="black" onPress={() => {}} style={styles.button} />
+      <Button title="Emergência" color="black" onPress={() => navigation.navigate('Emergencia')} style={styles.button} />
       <Button title="Perfil" color="black" onPress={() => navigation.navigate('Perfil')} style={styles.lastButton} />
     </View>
   );
