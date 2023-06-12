@@ -7,8 +7,8 @@ import { AuthContext } from '../Modelos/AuthContext';
 const BASE_URL = 'https://c5a2-193-137-92-29.eu.ngrok.io';
 let csrfToken = null;
 
-export const loginUser = async (username, password, navigation) => {
-    const authContext = useContext(AuthContext);
+export const loginUser = async (username, password, navigation, authContext) => {
+    //const authContext = useContext(AuthContext);
     try {
         console.log('Sending request to API');
         let response = await fetch(`${BASE_URL}/login`, {
@@ -144,8 +144,8 @@ export const cookieBakery = async () => {
     
   }
 
-  export const apiLogout = async () => {
-    const authContext = useContext(AuthContext);
+  export const apiLogout = async (authContext) => {
+    //const authContext = useContext(AuthContext);
     try {
         const cookie = await cookieBakery();  // Use o cookie salvo na AsyncStorage
         console.log('Using cookie:', cookie);

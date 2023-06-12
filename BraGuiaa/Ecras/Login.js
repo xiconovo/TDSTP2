@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, ImageBackground, TextInput, Button } from 'react-native';
 import { loginUser } from '../Api/api';
+import { AuthContext } from '../Modelos/AuthContext';
 
 const Login = ({navigation}) => {
+    const authContext = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
         console.log('Button pressed');
-        loginUser(username, password, navigation);
+        loginUser(username, password, navigation, authContext);
     };
 
     return (

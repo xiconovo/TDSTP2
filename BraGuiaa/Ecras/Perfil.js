@@ -1,13 +1,13 @@
 // Profile.js
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Button } from 'react-native';
 import { apiLogout } from '../Api/api';
+import { AuthContext } from '../Modelos/AuthContext';
 
 const Profile = ({navigation}) => {
+    const authContext = useContext(AuthContext);
     const handleLogout = async () => {
-        await apiLogout();
-        //logoutUser();
-        // Navegar para a tela de login após o logout
+        await apiLogout(authContext);
         navigation.navigate('Login');
     };
 

@@ -1,11 +1,16 @@
 import React from 'react';
-import { View, Button } from 'react-native';
-import { Linking } from 'react-native';
+import { View, Button, Linking, Alert } from 'react-native';
 
 const Emergencia = () => {
-  const handleEmergencyCall = () => {
-    Linking.openURL('tel:112')
-      .catch((err) => console.error('Failed to dial 112', err));
+  const handleEmergencyCall = async () => {
+    const url = 'tel:112';
+    const canOpenURL = await Linking.canOpenURL(url);
+    if (canOpenURL) {
+      Linking.openURL(url)
+        .catch((err) => console.error('Failed to dial 112', err));
+    } else {
+      Alert.alert('Este dispositivo não é capaz de fazer chamadas telefônicas');
+    }
   };
 
   return (
