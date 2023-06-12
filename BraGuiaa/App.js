@@ -15,6 +15,7 @@ import TrailMap from './Ecras/TrailMap';
 import History from './Ecras/History';
 import { TrailHistoryProvider } from './Ecras/TrailHistoryContext'; 
 import MediaFiles from './Ecras/MediaFiles';
+import TrailInfo from './Ecras/TrailInfo';
 
 const Stack = createStackNavigator();
 
@@ -53,6 +54,7 @@ const App = () => {
                 <Stack.Screen name="TrailMap" component={TrailMap} />
                 <Stack.Screen name="MediaFiles" component={MediaFiles} />
                 <Stack.Screen name="History" component={History} />
+                <Stack.Screen name="TrailInfo" component={TrailInfo} />
               </>
             ) : (
               <Stack.Screen name="Login" component={Login} />
