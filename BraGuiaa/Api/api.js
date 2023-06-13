@@ -8,7 +8,6 @@ const BASE_URL = 'https://c5a2-193-137-92-29.eu.ngrok.io';
 let csrfToken = null;
 
 export const loginUser = async (username, password, navigation, authContext) => {
-    //const authContext = useContext(AuthContext);
     try {
         console.log('Sending request to API');
         let response = await fetch(`${BASE_URL}/login`, {
@@ -17,24 +16,19 @@ export const loginUser = async (username, password, navigation, authContext) => 
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ username, password }),
-            credentials: 'omit', // Não enviar cookies
+            credentials: 'omit', 
         });
 
         console.log('HTTP status code:', response.status);
 
-        // 1. Extraia o "set-cookie" da resposta
         const setCookie = response.headers.get('set-cookie');
-        // Divide a string de entrada em duas partes: csrftoken e sessionid
         var splitInput = setCookie.split(', sessionid=');
 
-        // A primeira parte é a string csrftoken
         var csrftoken = splitInput[0];
 
-        // A segunda parte é a string sessionid
         var sessionid = "sessionid=" + splitInput[1];
         console.log('Set-Cookie:', csrftoken);
 
-        // 2. Guarde o "set-cookie" na AsyncStorage
         if (setCookie !== null) {
             await AsyncStorage.setItem('csrftoken', csrftoken);
             console.log('csrftoken:', csrftoken);
@@ -46,7 +40,6 @@ export const loginUser = async (username, password, navigation, authContext) => 
             console.warn('Set-Cookie is null, not storing in AsyncStorage');
         }
 
-        // Proceda normalmente
         let json = await response.json();
         console.log('Response from API:', json);
 
@@ -145,12 +138,10 @@ export const cookieBakery = async () => {
   }
 
   export const apiLogout = async (authContext) => {
-    //const authContext = useContext(AuthContext);
     try {
-        const cookie = await cookieBakery();  // Use o cookie salvo na AsyncStorage
+        const cookie = await cookieBakery();  
         console.log('Using cookie:', cookie);
 
-        // Extraindo o token CSRF do cookie
         let csrfToken = null;
         if (cookie) {
             let cookies = cookie.split(';');
@@ -168,21 +159,19 @@ export const cookieBakery = async () => {
 
         console.log('Using CSRF token:', csrfToken);
 
-        // A url abaixo é apenas um exemplo. Substitua pela url correta da sua API
         const url = `${BASE_URL}/logout`;
 
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'csrftoken': csrfToken,  // Envie o valor do token CSRF no cabeçalho 'X-CSRFToken'
+                'csrftoken': csrfToken,  
             },
         });
 
         if (response.status === 200) {
             console.log('User logged out successfully');
 
-            // 1. Apaga o cookie da AsyncStorage
             await AsyncStorage.removeItem('csrftoken');
             await AsyncStorage.removeItem('sessionid');
             console.log('Cookies removed from AsyncStorage');

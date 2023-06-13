@@ -1,12 +1,12 @@
 // History.js
 import React, { useContext } from 'react';
-import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity,Button} from 'react-native';
 import { TrailHistoryContext } from '../Ecras/TrailHistoryContext';
 import { useNavigation } from '@react-navigation/native';
 
 const History = () => {
   const navigation = useNavigation();  
-  const { trailHistory } = useContext(TrailHistoryContext);
+  const { trailHistory, clearHistory } = useContext(TrailHistoryContext);
 
   const renderItem = ({ item }) => (
     <TouchableOpacity onPress={() => navigation.navigate('TrailInfo', { trail: item })}>  
@@ -19,11 +19,20 @@ const History = () => {
   
 
   return (
-    <FlatList
-      data={trailHistory}
-      renderItem={renderItem}
-      keyExtractor={item => item.id.toString()} 
-    />
+    <View style={{ flex: 1 }}>
+      <FlatList
+        style={{ flex: 1 }} 
+        data={trailHistory}
+        renderItem={renderItem}
+        keyExtractor={item => item.id.toString()} 
+      />
+      <View style={{ justifyContent: 'flex-end' }}>
+        <Button
+          title="Limpar Histórico"
+          onPress={clearHistory}
+        />
+      </View>
+    </View>
   );
 };
 

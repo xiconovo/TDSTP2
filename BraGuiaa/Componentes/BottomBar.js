@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   lastButton: {
     flex: 1,
-    borderRightWidth: 0, // No border on the right for the last button
+    borderRightWidth: 0, 
   },
 });
 

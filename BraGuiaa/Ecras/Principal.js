@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'flex-start',
       paddingTop: 20,
-      backgroundColor: 'transparent', // Alterado para transparente
+      backgroundColor: 'transparent', 
   },
   textBox: {
       marginHorizontal: 20,

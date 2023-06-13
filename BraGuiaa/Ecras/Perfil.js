@@ -11,8 +11,8 @@ const Profile = ({navigation}) => {
         navigation.navigate('Login');
     };
 
-    const userType = 'Premium'; // Substitua isso pelo valor real
-    const username = 'johndoe'; // Substitua isso pelo valor real
+    const userType = 'Premium';
+    const username = 'johndoe';
 
     const handleProfileInfoPress = () => {
         navigation.navigate('ProfileInfo', { userType, username });

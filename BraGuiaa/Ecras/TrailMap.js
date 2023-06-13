@@ -39,14 +39,11 @@ const TrailMap = ({ route }) => {
     
             const flattenedCoordinates = trailCoordinates.flat();
     
-            // Calculate the center of the trail
             const middleIndex = Math.floor(flattenedCoordinates.length / 2);
             const middleCoordinate = flattenedCoordinates[middleIndex];
     
             setCoordinates(flattenedCoordinates);
     
-            // Set the map region to the center of the trail with a delta
-            // large enough to include the entire trail
             setRegion({
                 latitude: middleCoordinate.latitude,
                 longitude: middleCoordinate.longitude,
@@ -68,7 +65,6 @@ const TrailMap = ({ route }) => {
         return null;
     }
 
-    // Connect user location to the first point of the trail
     const userTrailCoordinates = [
         userLocation,
         coordinates[0],

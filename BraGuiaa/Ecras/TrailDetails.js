@@ -23,7 +23,6 @@ const TrailDetails = () => {
   }, []);
 
   const handleStartTrail = () => {
-    // Navega para a tela TrailMap, passando o trail como parâmetro
     navigation.navigate('TrailMap', { trail });
 
     addToHistory({

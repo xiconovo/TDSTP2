@@ -14,10 +14,10 @@ const styles = StyleSheet.create({
         height: 60,
         alignItems: 'center',
         padding: 15,
-        backgroundColor: 'white', // Altere para a cor que você deseja
+        backgroundColor: 'white', 
     },
     title: {
-        color: 'blue', // Altere para a cor que você deseja
+        color: 'blue', 
         fontSize: 20,
         fontWeight: 'bold',
     },

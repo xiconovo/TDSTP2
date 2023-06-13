@@ -5,7 +5,7 @@ import PagerView from 'react-native-pager-view';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-const mediaSize = Math.min(windowWidth, windowHeight) * 0.6; // vamos usar 60% do menor tamanho entre a largura e altura da janela
+const mediaSize = Math.min(windowWidth, windowHeight) * 0.6; 
 
 const MediaFiles = ({ route }) => {
   const { trail } = route.params;
