@@ -1,11 +1,7 @@
-// Api.js
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { useContext } from 'react';
-import { AuthContext } from '../Modelos/AuthContext';
 
 
 const BASE_URL = 'https://c5a2-193-137-92-29.eu.ngrok.io';
-let csrfToken = null;
 
 export const loginUser = async (username, password, navigation, authContext) => {
     try {
