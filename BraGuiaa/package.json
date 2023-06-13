@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest"
+    "test": "jest",
+    "test:rotas": "jest ./__tests__/rotasTest.js"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.17.11",
@@ -38,6 +39,7 @@
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
+    "@testing-library/react-native": "^9.0.0",
     "@types/jest": "^29.5.2",
     "babel-jest": "^29.5.0",
     "babel-preset-react-native": "^4.0.1",
